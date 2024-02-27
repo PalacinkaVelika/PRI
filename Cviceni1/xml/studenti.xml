@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<studenti>
+
+<student>
+    <note id ='F22513'>
+        <Fname>Daniel</Fname>
+        <Lname>Riha</Lname>
+        <faculty>PRF</faculty>
+        <studyYear>2</studyYear>
+    </note>
+</student>
+
+<student>
+    <note id ='F22514'>
+        <Fname>Alex</Fname>
+        <Lname>SChonfy</Lname>
+        <faculty>PRF</faculty>
+        <studyYear>1</studyYear>
+    </note>
+</student>
+
+</studenti>
