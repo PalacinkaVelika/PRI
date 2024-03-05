@@ -16,7 +16,16 @@
         <table>
             <tr>
                 <td>XML soubor:</td>
-                <td><input type="file" name="xml" accept="text/xml" data-max-file-size="2M"></td>
+                <td>
+                    <!-- Allow users to choose from XML files on disk -->
+                    <select name="xml">
+                        <?php
+                        foreach (glob("xml/*.xml") as $file) {
+                            echo "<option value=\"$file\">$file</option>";
+                        }
+                        ?>
+                    </select>
+                </td>
             </tr>
             <tr>
                 <td>XSD/DTD soubor:</td>
@@ -86,6 +95,36 @@
             echo "The uploaded XML file is valid.";
     }
     ?>
+
+
+    <?php
+        function handleFormSubmission() {
+            $selectedXml = $_POST['xml'];
+            $schemaFile = @$_FILES['schema'];
+            echo $selectedXml;
+            
+            echo "<a href='".$selectedXml.".'>Studentů Catalog</a>";
+            // XML
+            $xml = new DOMDocument;
+            $xml->load($selectedXml);
+            // XSL
+            $xsl_special = substr($selectedXml, 0, -4);
+            $xsl = new DOMDocument;
+            $xsl->load($xsl_special.'.xsl');
+            // transformer
+            $xslt = new XSLTProcessor();
+            $xslt->importStylesheet($xsl);
+            $transformovany_xml = $xslt->transformToXml($xml);
+            // output
+            echo $transformovany_xml;
+
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            handleFormSubmission();
+        }
+    ?>
+
 </body>
 
 </html>

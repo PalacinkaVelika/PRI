@@ -1,0 +1,24 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f2f2f2; /* Light gray background */
+}
+
+note {
+    display: block;
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #e6e6ff; /* Light purple background */
+}
+
+/* Style for the 'Fname' and 'Lname' elements within the 'note' */
+note Fname, note Lname {
+    font-weight: bold;
+    color: #663399; /* Dark purple text color */
+}
+
+/* Style for the 'faculty' and 'studyYear' elements within the 'note' */
+note faculty, note studyYear {
+    color: #800080; /* Purple text color */
+}
